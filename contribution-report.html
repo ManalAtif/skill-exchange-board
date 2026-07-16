@@ -1,0 +1,463 @@
+
+
+<!-- NEW FILES -->
+<div class="section">
+  <div class="section-label">New Files</div>
+  <h2>Pages &amp; Components Created from Scratch</h2>
+  <p class="section-intro">These files did not exist in the original codebase. Every line was written as part of this contribution.</p>
+  <div class="contrib-list">
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Page</span>
+        <div>
+          <h3>404 — Not Found</h3>
+          <div class="filepath">src/pages/NotFound.jsx</div>
+          <p>A styled 404 page matching the corkboard theme. Any invalid URL now shows this instead of a blank screen.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Pin-card design with gold pushpin, matching the app's visual language</li>
+          <li>Framer Motion entrance animation with a slight rotation</li>
+          <li>"Back to home" button</li>
+          <li>Wired as a catch-all <code>*</code> route in App.jsx</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/fakepage here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Page</span>
+        <div>
+          <h3>My Listings</h3>
+          <div class="filepath">src/pages/MyListings.jsx</div>
+          <p>Lets logged-in users manage all listings they've posted — view, edit, or delete each one.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Fetches user's own listings from <code>GET /listings/mine</code> with mock fallback</li>
+          <li>Skeleton loader while fetching</li>
+          <li>View, Edit, Delete action buttons per card</li>
+          <li>Delete triggers a ConfirmDialog before firing the API call</li>
+          <li>Toast notification on successful delete</li>
+          <li>"New listing" CTA button in the page header</li>
+          <li>Empty state with link to create first listing</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/my-listings here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Page</span>
+        <div>
+          <h3>User Profile (Public View)</h3>
+          <div class="filepath">src/pages/UserProfile.jsx</div>
+          <p>A public profile page for any user, showing their bio, location, and all their listings.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Loads profile info from <code>GET /users/:id</code> and listings from <code>GET /listings?owner=:id</code></li>
+          <li>Avatar with initial, name, location, bio</li>
+          <li>Message button linking to chat</li>
+          <li>Block user button with ConfirmDialog + toast feedback</li>
+          <li>Hides block/message buttons when viewing your own profile</li>
+          <li>Skeleton hero + skeleton grid while loading</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/user/1 here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Page</span>
+        <div>
+          <h3>Edit Listing</h3>
+          <div class="filepath">src/pages/EditListing.jsx</div>
+          <p>Edit page for an existing listing. Pre-fills all fields from the API and saves changes.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Loads existing listing data on mount, pre-fills the form</li>
+          <li>Same validation as Create Listing</li>
+          <li>Calls <code>PUT /listings/:id</code> on save</li>
+          <li>Toast on success, redirects to My Listings</li>
+          <li>Cancel button returns to My Listings without saving</li>
+          <li>Protected route — requires login</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/edit-listing/1 here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Component</span>
+        <div>
+          <h3>Site Footer</h3>
+          <div class="filepath">src/components/Footer.jsx</div>
+          <p>A full-width footer that appears on every page of the site.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Brand logo + tagline column</li>
+          <li>3 navigation columns: Explore, Account, Community</li>
+          <li>Social buttons (Email, GitHub)</li>
+          <li>Copyright bar with Privacy / Terms / Contact</li>
+          <li>Responsive: 4 columns → 2 columns → 1 column</li>
+          <li>Matches the dark ink navbar aesthetic</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of the footer (bottom of any page) here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Component</span>
+        <div>
+          <h3>Skeleton Card Loader</h3>
+          <div class="filepath">src/components/SkeletonCard.jsx</div>
+          <p>Shimmer placeholder cards shown while listings are loading, replacing the plain spinner.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>CSS shimmer animation matching the pin-card shape</li>
+          <li>Used in BrowseListings, MatchesPage, MyListings, UserProfile</li>
+          <li>aria-hidden so screen readers skip it</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Open DevTools → Network → Slow 3G, then visit /browse to see skeleton cards</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Component</span>
+        <div>
+          <h3>Toast Notification System</h3>
+          <div class="filepath">src/components/Toast.jsx</div>
+          <p>Global toast notifications shown in the bottom-right corner for success and error feedback.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Context-based — any component can call <code>addToast(message, type)</code></li>
+          <li>Success (green) and error (red) variants</li>
+          <li>Auto-dismisses after 3.5 seconds</li>
+          <li>Manual dismiss button</li>
+          <li>Framer Motion enter/exit animations</li>
+          <li>Used on: Profile save, listing delete, listing report, edit listing, block user</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot showing a toast notification (e.g. after saving profile) here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge new">New Component</span>
+        <div>
+          <h3>Confirm Dialog</h3>
+          <div class="filepath">src/components/ConfirmDialog.jsx</div>
+          <p>A reusable modal dialog for confirming destructive actions before they execute.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Animated backdrop with blur effect</li>
+          <li>Customisable title, message, confirm label</li>
+          <li>Danger mode (red button) for destructive actions</li>
+          <li>Used for: delete listing, report listing, block user</li>
+          <li>Clicking backdrop dismisses the dialog</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of confirm dialog (click Delete on My Listings page) here</p></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODIFIED FILES -->
+<div class="section">
+  <div class="section-label">Modified Files</div>
+  <h2>Existing Files — Improved</h2>
+  <p class="section-intro">These files existed in the original codebase and were significantly enhanced.</p>
+  <div class="contrib-list">
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Home Page — Full Redesign</h3>
+          <div class="filepath">src/pages/Home.jsx</div>
+          <p>The home page was rebuilt from scratch with 6 distinct sections and professional design.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Hero with trust indicators ("Free to join · No credit card · Local community")</li>
+          <li>Stats band: 500+ Skills, 250+ Members, 120+ Exchanges, 30+ Categories</li>
+          <li>"How it works" — 3-step cards with icon boxes</li>
+          <li>Browse by category grid — 8 emoji chips, each links to filtered browse</li>
+          <li>Features section with gold icon boxes</li>
+          <li>Testimonials section on dark corkboard background with star ratings</li>
+          <li>CTA section with conditional buttons (logged in vs guest)</li>
+          <li>Fully responsive — all grids stack on mobile</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot(s) of http://localhost:5174/ (scroll to capture all sections) here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Login Page — Redesigned</h3>
+          <div class="filepath">src/pages/Login.jsx</div>
+          <p>Replaced the plain centered card with a professional two-panel split layout.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Left panel: corkboard background, brand mark, 4 benefit bullet points</li>
+          <li>Right panel: clean login form with improved input styling</li>
+          <li>On mobile: left panel hides, form takes full screen</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/login here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Signup Page — Redesigned</h3>
+          <div class="filepath">src/pages/Signup.jsx</div>
+          <p>Same two-panel layout as login, with an added live password strength indicator.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Left panel with community-focused benefit points</li>
+          <li>Live password strength bar: Weak (red) / Medium (amber) / Strong (green)</li>
+          <li>Removed redundant duplicate content from the original</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/signup (type in password field to show strength bar) here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Browse Listings — Enhanced</h3>
+          <div class="filepath">src/pages/BrowseListings.jsx</div>
+          <p>Added a type filter and improved the loading state.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>"All / Offering / Looking for" type toggle next to the search box</li>
+          <li>Search now also matches listing descriptions, not just titles</li>
+          <li>Skeleton card grid replaces the plain spinner</li>
+          <li>6 mock listings instead of 5 for better grid coverage</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/browse here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Chat Page — Enhanced</h3>
+          <div class="filepath">src/pages/ChatPage.jsx</div>
+          <p>The bare bubble chat was upgraded with full messaging UI polish.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Message timestamps shown under every bubble</li>
+          <li>Day separators between messages ("Today", "Yesterday", date)</li>
+          <li>Sender avatar (coloured circle with initial) per message</li>
+          <li>Sender name above each received message</li>
+          <li>Header shows listing title and "with [name]"</li>
+          <li>Back button to navigate to previous page</li>
+          <li>Mock messages pre-populated for demo without backend</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/chat/1 here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Listing Detail — Enhanced</h3>
+          <div class="filepath">src/pages/ListingDetail.jsx</div>
+          <p>Added missing UI elements that make the detail page actually useful.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Back button at the top</li>
+          <li>Author info card showing poster's name and location</li>
+          <li>Report listing now opens a ConfirmDialog before submitting</li>
+          <li>Toast notification after reporting</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/listing/1 here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Matches Page — Enhanced</h3>
+          <div class="filepath">src/pages/MatchesPage.jsx</div>
+          <p>Was a dead empty state. Now shows mock data and a useful empty state with CTA.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>4 mock match listings as fallback (was 0)</li>
+          <li>Skeleton card grid while loading</li>
+          <li>Empty state has an icon and "Create a listing" CTA button</li>
+          <li>Banner when using mock data</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of http://localhost:5174/matches here</p></div>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge modified">Modified</span>
+        <div>
+          <h3>Navbar — Enhanced</h3>
+          <div class="filepath">src/components/Navbar.jsx</div>
+          <p>Visual and functional upgrades to the main navigation.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Brand icon gets a teal box with hover color change</li>
+          <li>"Post listing" CTA button inline in the desktop nav</li>
+          <li>"My Listings" link added for logged-in users</li>
+          <li>User avatar (gold circle with initial) + first name shown when logged in</li>
+          <li>Mobile menu uses Framer Motion slide animation (was instant show/hide)</li>
+        </ul>
+        <div class="ss"><strong>Screenshot placeholder</strong><p>Paste screenshot of the navbar (logged-in state) here</p></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DESIGN SYSTEM -->
+<div class="section">
+  <div class="section-label">Design System</div>
+  <h2>Visual Design Overhaul</h2>
+  <p class="section-intro">The CSS design tokens and component styles were significantly upgraded to give the whole app a more professional, polished feel.</p>
+  <div class="contrib-list">
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge style">Styles</span>
+        <div>
+          <h3>Design Tokens</h3>
+          <div class="filepath">src/styles/tokens.css</div>
+          <p>The global CSS variables were upgraded with a richer palette, better typography, and a 4-level shadow system.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Google Fonts loaded directly: Fraunces (display), IBM Plex Sans (body), IBM Plex Mono</li>
+          <li>Expanded colour palette: teal, rust, gold — each with light/dark/bg tints</li>
+          <li>4-level shadow scale: xs, card, card-hover, pop</li>
+          <li>Larger border radii (up to 26px) for a premium feel</li>
+          <li>Subtle crosshatch SVG pattern on the corkboard hero texture</li>
+          <li>Added section-label utility class used across all pages</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-header">
+        <span class="badge style">Styles</span>
+        <div>
+          <h3>Component Styles</h3>
+          <div class="filepath">src/styles/components.css</div>
+          <p>All component classes were refined for a more professional look and feel.</p>
+        </div>
+      </div>
+      <div class="contrib-body">
+        <ul class="fl">
+          <li>Buttons: lift on hover with coloured drop shadows</li>
+          <li>Inputs: focus glow ring (not just border change)</li>
+          <li>Select element: custom dropdown arrow via background SVG</li>
+          <li>Stamp badges: now have tinted background fills</li>
+          <li>Pin cards: smoother rotation (3n pattern), scale on hover</li>
+          <li>Confirm dialog: blur backdrop</li>
+          <li>Skeleton loader shimmer animation</li>
+          <li>Stats grid responsive breakpoints (4 col → 2 col → 1 col)</li>
+          <li>ListingCard "View details →" footer with animated arrow gap</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ROUTES -->
+<div class="section">
+  <div class="section-label">Routing</div>
+  <h2>New Routes Added</h2>
+  <p class="section-intro">The following routes were wired into App.jsx as part of this contribution.</p>
+  <table>
+    <tr><th>Route</th><th>Page</th><th>Protected</th></tr>
+    <tr><td>/my-listings</td><td>MyListings.jsx</td><td>Yes</td></tr>
+    <tr><td>/edit-listing/:id</td><td>EditListing.jsx</td><td>Yes</td></tr>
+    <tr><td>/user/:userId</td><td>UserProfile.jsx</td><td>No</td></tr>
+    <tr><td>* (catch-all)</td><td>NotFound.jsx</td><td>No</td></tr>
+  </table>
+  <br/>
+  <p style="color:#4a5147;font-size:14px">Also added: <code>ToastProvider</code> wrapping the entire app, and <code>Footer</code> rendered on every page via the layout wrapper in App.jsx.</p>
+</div>
+
+<!-- API -->
+<div class="section">
+  <div class="section-label">API Layer</div>
+  <h2>New API Functions</h2>
+  <p class="section-intro">Two new functions were added to <code>src/services/api.js</code> to support the new pages.</p>
+  <table>
+    <tr><th>Function</th><th>Endpoint</th><th>Used by</th></tr>
+    <tr><td>getMyListings()</td><td>GET /listings/mine</td><td>MyListings.jsx</td></tr>
+    <tr><td>getUserById(id)</td><td>GET /users/:id</td><td>UserProfile.jsx</td></tr>
+  </table>
+</div>
+
+<!-- CLOSING -->
+<div class="section" style="background:#faf7ef;border-bottom:none">
+  <div class="section-label">Summary</div>
+  <h2>What Was Delivered</h2>
+  <p class="section-intro">This contribution transformed an existing MVP frontend into a complete, professional-grade application with the following improvements:</p>
+  <ul class="fl" style="max-width:640px">
+    <li>4 new fully functional pages (NotFound, MyListings, UserProfile, EditListing)</li>
+    <li>4 new reusable components (Footer, SkeletonCard, Toast, ConfirmDialog)</li>
+    <li>Complete visual redesign of Home, Login, and Signup pages</li>
+    <li>Enhanced UX on Browse, Chat, Listing Detail, Matches, Profile, and Navbar</li>
+    <li>A professional design system with Google Fonts, richer colours, and polished shadows</li>
+    <li>Full mobile responsiveness across all new and modified pages</li>
+    <li>All pages work with mock data — no backend required for demonstration</li>
+  </ul>
+  <br/><br/>
+  <p style="color:#7a8578;font-size:13px">Visit <span class="url">http://localhost:5174</span> and use <strong>Ctrl+P → Save as PDF</strong> in Chrome to export this document.</p>
+</div>
+
+</div><!-- .page -->
+</body>
+</html>

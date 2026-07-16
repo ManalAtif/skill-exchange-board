@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { List } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { updateProfile } from "../services/api";
 import { sanitizeText } from "../utils/validation";
+import { useToast } from "../components/Toast";
 import Field from "../components/Field";
 import PageTransition from "../components/PageTransition";
 
 export default function Profile() {
   const { user } = useAuth();
+  const { addToast } = useToast();
   const [form, setForm] = useState({ name: "", bio: "", location: "", photo_url: "" });
-  const [saved, setSaved] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -27,20 +29,17 @@ export default function Profile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (submitting) return;
-    setError("");
     setSubmitting(true);
     try {
       await updateProfile({
         name: sanitizeText(form.name, 100),
         bio: sanitizeText(form.bio, 500),
         location: sanitizeText(form.location, 120),
-        // photo_url is just displayed as an <img src>, never injected as HTML — safe from XSS either way.
         photo_url: sanitizeText(form.photo_url, 500),
       });
-      setSaved(true);
-      setTimeout(() => setSaved(false), 2500);
+      addToast("Profile updated.");
     } catch (err) {
-      setError(err.response?.data?.message || "Couldn't save your profile. Try again.");
+      addToast(err.response?.data?.message || "Couldn't save your profile. Try again.", "error");
     } finally {
       setSubmitting(false);
     }
@@ -63,11 +62,11 @@ export default function Profile() {
                 <span>{form.name?.[0]?.toUpperCase() || "?"}</span>
               )}
             </div>
-            <h2>My profile</h2>
+            <div>
+              <h2 style={{ marginBottom: 4 }}>My profile</h2>
+              {user?.name && <p style={{ color: "var(--ink-soft)", fontSize: "0.9rem", margin: 0 }}>{user.name}</p>}
+            </div>
           </div>
-
-          {saved && <div className="alert alert-success">Profile updated.</div>}
-          {error && <div className="alert alert-error">{error}</div>}
 
           <form onSubmit={handleSubmit} noValidate>
             <Field label="Name" htmlFor="name">
@@ -87,6 +86,12 @@ export default function Profile() {
               {submitting ? "Saving…" : "Save changes"}
             </motion.button>
           </form>
+
+          <div className="profile-footer">
+            <Link to="/my-listings" className="profile-footer-link">
+              <List size={16} /> View my listings
+            </Link>
+          </div>
         </motion.div>
       </div>
 
@@ -101,6 +106,14 @@ export default function Profile() {
           flex-shrink: 0;
         }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-footer {
+          margin-top: var(--space-5); padding-top: var(--space-4);
+          border-top: 1px solid var(--line); text-align: center;
+        }
+        .profile-footer-link {
+          display: inline-flex; align-items: center; gap: 6px;
+          font-size: 0.9rem; font-weight: 600; color: var(--teal);
+        }
       `}</style>
     </PageTransition>
   );
