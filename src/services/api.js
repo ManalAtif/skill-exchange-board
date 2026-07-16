@@ -62,5 +62,7 @@ export const blockUser = (userId) => api.post(`/users/${userId}/block`);
 // ---- Profile ----
 export const getProfile = () => api.get("/users/me");
 export const updateProfile = (data) => api.put("/users/me", data);
+export const getUserById = (id) => api.get(`/users/${id}`);
+export const getMyListings = () => api.get("/listings/mine");
 
 export default api;

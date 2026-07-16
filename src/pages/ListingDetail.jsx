@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Flag } from "lucide-react";
+import { MapPin, Clock, Flag, User } from "lucide-react";
 import { getListingById, reportListing } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import PageTransition from "../components/PageTransition";
@@ -26,6 +26,8 @@ export default function ListingDetail() {
             id, type: "offer", title: "Guitar Lessons for Beginners", category: "Music",
             location: "Satellite Town", availability: "Weekends",
             description: "I've been playing for 8 years and love teaching absolute beginners chords and strumming patterns.",
+            owner_name: "Ali Raza",
+            owner_location: "Satellite Town",
           });
         }
       } finally {
@@ -77,6 +79,23 @@ export default function ListingDetail() {
             </p>
           )}
 
+          {/* Author info */}
+          {(listing.owner_name || listing.owner_location) && (
+            <div className="detail-author">
+              <div className="detail-avatar">
+                <User size={16} />
+              </div>
+              <div>
+                {listing.owner_name && <p className="detail-author-name">{listing.owner_name}</p>}
+                {listing.owner_location && (
+                  <p className="detail-author-loc">
+                    <MapPin size={12} style={{ verticalAlign: "-2px" }} /> {listing.owner_location}
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+
           <div className="detail-actions">
             <motion.button
               whileTap={{ scale: 0.97 }}
@@ -107,6 +126,19 @@ export default function ListingDetail() {
         }
         .btn-report:hover:not(:disabled) { color: var(--rust); }
         .btn-report:disabled { color: var(--teal); cursor: default; }
+        .detail-author {
+          display: flex; align-items: center; gap: var(--space-3);
+          margin-top: var(--space-4); padding: var(--space-3) var(--space-4);
+          background: var(--paper); border: 1px solid var(--line);
+          border-radius: var(--radius-md);
+        }
+        .detail-avatar {
+          width: 38px; height: 38px; border-radius: 50%;
+          background: var(--gold); display: flex; align-items: center;
+          justify-content: center; color: var(--paper-raised); flex-shrink: 0;
+        }
+        .detail-author-name { font-weight: 600; font-size: 0.95rem; margin: 0; }
+        .detail-author-loc  { font-size: 0.8rem; color: var(--ink-soft); margin: 2px 0 0; }
       `}</style>
     </PageTransition>
   );
